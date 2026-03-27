@@ -238,6 +238,23 @@
       font-weight: 700;
     }
 
+    .domain-option:hover, .hosting-option:hover {
+      background: #111111 !important;
+    }
+    .domain-option.selected, .hosting-option.selected {
+      background: rgba(201,169,98,0.04) !important;
+    }
+    .domain-check.selected, .hosting-check.selected {
+      border-color: #C9A962 !important;
+      background: rgba(201,169,98,0.15);
+    }
+    .domain-check.selected::after, .hosting-check.selected::after {
+      content: '✓';
+      color: #C9A962;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
     #submit-contract-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 32px rgba(201,169,98,0.25);
@@ -300,7 +317,11 @@
       .plan-price { color: #666 !important; }
       .addon-option { background: #fff !important; border-bottom: 1px solid #ddd !important; }
       .addon-option.selected { background: #f5f5f0 !important; }
-      .addon-check { border-color: #333 !important; }
+      .addon-check, .domain-check, .hosting-check { border-color: #333 !important; }
+      .domain-option, .hosting-option { background: #fff !important; }
+      .domain-option.selected, .hosting-option.selected { background: #f5f5f0 !important; }
+      .domain-check.selected, .hosting-check.selected { background: #e8e4d8 !important; }
+      .domain-check.selected::after, .hosting-check.selected::after { color: #333 !important; }
       .addon-check.selected { background: #e8e4d8 !important; }
       .addon-check.selected::after { color: #333 !important; }
       section {
@@ -535,15 +556,178 @@
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
     <span class="article-num fade-in">Article 6</span>
     <h2 class="article-title fade-in fade-in-delay-1">Client Responsibilities</h2>
-    <p class="body-text fade-in" style="margin:0 0 24px;">The Client agrees to provide:</p>
-    <div style="display:flex; flex-direction:column; gap:14px;">
-      <div class="list-item fade-in"><div class="list-bullet"></div><span>Domain registration (₱800–₱1,500/year via Namecheap, GoDaddy, or preferred registrar)</span></div>
-      <div class="list-item fade-in"><div class="list-bullet"></div><span>Hosting account (free via Vercel or paid hosting of choice)</span></div>
-      <div class="list-item fade-in"><div class="list-bullet"></div><span>Product photos, descriptions, pricing, and brand assets needed for the website</span></div>
-      <div class="list-item fade-in"><div class="list-bullet"></div><span>Timely feedback during the review phase — within 2 business days</span></div>
+    <p class="body-text fade-in" style="margin:0 0 32px;">The Client agrees to provide the following. The Provider will assist with setup of all technical items.</p>
+
+    <!-- Domain Options -->
+    <div class="fade-in" style="margin-bottom:36px;">
+      <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 16px;">1 — Domain Name</p>
+      <p class="body-text" style="margin:0 0 20px;">Note: <strong style="color:#FAF8F5;">cjcmusic.com</strong> is currently unavailable (registered since 2001). The following alternatives have been verified as available:</p>
+
+      <div style="display:flex; flex-direction:column; gap:1px; background:#1F1F1F; margin-bottom:20px;">
+
+        <!-- Option A -->
+        <div class="domain-option fade-in" onclick="selectDomain(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+            <div class="domain-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
+            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">cjc-music.com</span>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#C9A962; text-transform:uppercase; border:1px solid rgba(201,169,98,0.3); padding:2px 8px; margin-left:auto;">Recommended</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">First Year</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱380</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱900/year</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Register at</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; color:#888888; margin:0;">Namecheap or Cloudflare</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option B -->
+        <div class="domain-option fade-in fade-in-delay-1" onclick="selectDomain(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+            <div class="domain-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
+            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">cjcmusic.shop</span>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#888888; text-transform:uppercase; border:1px solid #333; padding:2px 8px; margin-left:auto;">Cheapest Entry</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">First Year</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱50</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱1,450/year</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Register at</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; color:#888888; margin:0;">Namecheap or Spaceship</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Option C -->
+        <div class="domain-option fade-in fade-in-delay-2" onclick="selectDomain(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+            <div class="domain-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
+            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">cjcmusicph.com</span>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#888888; text-transform:uppercase; border:1px solid #333; padding:2px 8px; margin-left:auto;">Local Identity</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">First Year</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱380</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱900/year</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Register at</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; color:#888888; margin:0;">Namecheap or Cloudflare</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <p style="font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666; margin:0; font-style:italic;">Prices based on current rates and may vary. Domain availability verified as of March 2026.</p>
     </div>
+
+    <!-- Hosting Options -->
+    <div class="fade-in" style="margin-bottom:36px;">
+      <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 16px;">2 — Web Hosting</p>
+      <p class="body-text" style="margin:0 0 20px;">Some Philippine ISPs (notably PLDT) have been known to intermittently block Vercel-hosted sites. To ensure reliable access for all visitors, we recommend paid hosting:</p>
+
+      <div style="display:flex; flex-direction:column; gap:1px; background:#1F1F1F; margin-bottom:20px;">
+
+        <!-- Hostinger -->
+        <div class="hosting-option fade-in" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+            <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
+            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Hostinger</span>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#C9A962; text-transform:uppercase; border:1px solid rgba(201,169,98,0.3); padding:2px 8px; margin-left:auto;">Recommended</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Cost</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱109/month</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱179/month</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Why</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#888888; margin:0;">Singapore data center = fast PH speeds. Free SSL. 99.9% uptime.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Namecheap -->
+        <div class="hosting-option fade-in fade-in-delay-1" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+            <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
+            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Namecheap Hosting</span>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#888888; text-transform:uppercase; border:1px solid #333; padding:2px 8px; margin-left:auto;">Bundle with Domain</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Cost</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱112/month</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱200/month</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Why</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#888888; margin:0;">Convenient if domain is also on Namecheap. Free SSL. 100% uptime guarantee.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vercel Free -->
+        <div class="hosting-option fade-in fade-in-delay-2" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
+            <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
+            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Vercel (Free Tier)</span>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#888888; text-transform:uppercase; border:1px solid #333; padding:2px 8px; margin-left:auto;">Free</span>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Cost</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">₱0</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">₱0</p>
+            </div>
+            <div>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">⚠️ Note</p>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#F87171; margin:0;">Some PH internet providers (PLDT) may intermittently block access to Vercel-hosted sites.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Other Responsibilities -->
+    <div class="fade-in" style="margin-bottom:24px;">
+      <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 16px;">3 — Content & Collaboration</p>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div class="list-item"><div class="list-bullet"></div><span>Product photos, descriptions, pricing, and brand assets needed for the website</span></div>
+        <div class="list-item"><div class="list-bullet"></div><span>Timely feedback during the review phase — within 2 business days</span></div>
+      </div>
+    </div>
+
     <div class="fade-in" style="margin-top:24px; border-left:2px solid rgba(201,169,98,0.3); padding-left:20px;">
-      <p style="font-family:'Manrope',sans-serif; font-size:0.825rem; color:#666666; margin:0; line-height:1.7; font-style:italic;">The Provider will guide the Client through domain and hosting setup. All accounts remain under the Client's ownership.</p>
+      <p style="font-family:'Manrope',sans-serif; font-size:0.825rem; color:#666666; margin:0; line-height:1.7; font-style:italic;">The Provider will guide the Client through domain registration and hosting setup. All accounts remain under the Client's ownership.</p>
     </div>
   </section>
 
@@ -830,6 +1014,26 @@
     list.innerHTML = names.join('');
   }
 
+  // Domain selection (radio — one at a time)
+  function selectDomain(el) {
+    document.querySelectorAll('.domain-option').forEach(opt => {
+      opt.classList.remove('selected');
+      opt.querySelector('.domain-check').classList.remove('selected');
+    });
+    el.classList.add('selected');
+    el.querySelector('.domain-check').classList.add('selected');
+  }
+
+  // Hosting selection (radio — one at a time)
+  function selectHosting(el) {
+    document.querySelectorAll('.hosting-option').forEach(opt => {
+      opt.classList.remove('selected');
+      opt.querySelector('.hosting-check').classList.remove('selected');
+    });
+    el.classList.add('selected');
+    el.querySelector('.hosting-check').classList.add('selected');
+  }
+
   // Plan selection (radio behavior — only one at a time)
   function selectPlan(el) {
     document.querySelectorAll('.plan-option').forEach(opt => {
@@ -884,6 +1088,10 @@
     // Gather data
     const planName = selectedPlan.querySelector('.plan-label').textContent;
     const planPrice = selectedPlan.querySelector('.plan-price').textContent;
+    const selectedDomain = document.querySelector('.domain-option.selected');
+    const domainName = selectedDomain ? selectedDomain.querySelector('span[style*="font-size:1.05rem"]').textContent : 'Not selected';
+    const selectedHostingEl = document.querySelector('.hosting-option.selected');
+    const hostingName = selectedHostingEl ? selectedHostingEl.querySelector('span[style*="font-size:1.05rem"]').textContent : 'Not selected';
     const addons = Array.from(document.querySelectorAll('.addon-option.selected')).map(el => {
       return el.querySelector('h3').textContent + ' — ' + el.querySelector('span[style*="font-size:1.1rem"]').textContent.trim();
     });
@@ -904,6 +1112,9 @@
 
 SELECTED PLAN: ${planName}
 PRICE: ${planPrice}
+
+DOMAIN: ${domainName}
+HOSTING: ${hostingName}
 
 ADD-ON SERVICES: ${addons.length > 0 ? '\n' + addons.map(a => '  • ' + a).join('\n') : 'None'}
 
@@ -936,6 +1147,8 @@ ${window.location.href}
           _subject: 'Contract Signed — CJC Music × Fishbone Creatives (' + planName + ')',
           _template: 'box',
           'Selected Plan': planName + ' — ' + planPrice,
+          'Domain': domainName,
+          'Hosting': hostingName,
           'Add-On Services': addons.length > 0 ? addons.join(' | ') : 'None',
           'Provider Name': providerName,
           'Provider Date': providerDate,

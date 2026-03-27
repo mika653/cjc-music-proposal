@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Service Agreement — CJC Music | Fishbone Creatives</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-page: #0F0F0F;
+      --color-card: #0A0A0A;
+      --color-border: #1F1F1F;
+      --color-gold: #C9A962;
+      --color-cream: #FAF8F5;
+      --color-secondary: #888888;
+      --color-tertiary: #666666;
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Manrope', system-ui, sans-serif;
+    }
+
+    * { border-radius: 0 !important; }
+
+    html {
+      background-color: #0F0F0F;
+      color: #FAF8F5;
+      font-family: 'Manrope', system-ui, sans-serif;
+    }
+
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+
+    .article-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: #FAF8F5;
+      margin: 0 0 20px 0;
+    }
+
+    .article-num {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      color: #C9A962;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .body-text {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: #888888;
+    }
+
+    .list-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.875rem;
+      line-height: 1.75;
+      color: #888888;
+    }
+
+    .list-bullet {
+      width: 5px;
+      height: 5px;
+      background: #C9A962;
+      transform: rotate(45deg);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .sig-line {
+      border-bottom: 1px solid #C9A962;
+      height: 48px;
+      margin-bottom: 8px;
+    }
+
+    .plan-check {
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid #666666;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .print-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: #C9A962;
+      background: #0A0A0A;
+      border: 1px solid #C9A962;
+      padding: 12px 24px;
+      cursor: pointer;
+      text-transform: uppercase;
+      z-index: 100;
+      transition: background 0.2s, color 0.2s;
+    }
+    .print-btn:hover {
+      background: #C9A962;
+      color: #0A0A0A;
+    }
+
+    @media print {
+      html, body {
+        background: #fff !important;
+        color: #111 !important;
+        font-size: 11pt;
+      }
+      .fade-in {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .print-btn, .back-link { display: none !important; }
+      .article-title { color: #111 !important; }
+      .article-num { color: #8B7340 !important; }
+      .body-text, .list-item { color: #333 !important; }
+      .sig-line { border-bottom-color: #333 !important; }
+      .plan-check { border-color: #333 !important; }
+      section {
+        border-color: #ddd !important;
+        background: #fff !important;
+        page-break-inside: avoid;
+        padding: 40px 0 !important;
+        min-height: auto !important;
+      }
+      [style*="background"] { background: #fff !important; }
+      [style*="border-bottom: 1px solid #1F1F1F"] { border-color: #ddd !important; }
+      .corner-deco { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Print Button -->
+<button class="print-btn" onclick="window.print()">
+  <span style="display:flex; align-items:center; gap:8px;">
+    <i data-lucide="printer" style="width:14px; height:14px;"></i>
+    Print Contract
+  </span>
+</button>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<section style="min-height:100vh; background:#0F0F0F; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:80px 40px; position:relative; text-align:center;">
+
+  <!-- Corner decorations -->
+  <div class="corner-deco" style="position:absolute; top:40px; left:40px; width:40px; height:40px;">
+    <div style="position:absolute; top:0; left:0; width:40px; height:1px; background:rgba(201,169,98,0.3);"></div>
+    <div style="position:absolute; top:0; left:0; width:1px; height:40px; background:rgba(201,169,98,0.3);"></div>
+  </div>
+  <div class="corner-deco" style="position:absolute; bottom:40px; right:40px; width:40px; height:40px;">
+    <div style="position:absolute; bottom:0; right:0; width:40px; height:1px; background:rgba(201,169,98,0.3);"></div>
+    <div style="position:absolute; bottom:0; right:0; width:1px; height:40px; background:rgba(201,169,98,0.3);"></div>
+  </div>
+
+  <!-- Back link -->
+  <a href="index.html" class="back-link fade-in" style="position:absolute; top:32px; left:40px; font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666; text-decoration:none; display:flex; align-items:center; gap:8px;">
+    <i data-lucide="arrow-left" style="width:14px; height:14px;"></i>
+    View Full Proposal
+  </a>
+
+  <div class="fade-in" style="margin-bottom:48px;">
+    <div style="width:60px; height:1px; background:#C9A962; margin:0 auto 32px;"></div>
+    <span style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.4em; color:#C9A962; text-transform:uppercase;">Service Agreement</span>
+  </div>
+
+  <h1 class="fade-in fade-in-delay-1" style="font-family:'Playfair Display',Georgia,serif; font-size:clamp(2.5rem,6vw,4.5rem); font-weight:400; color:#FAF8F5; margin:0 0 24px 0; line-height:1.1;">
+    Web Development<br>Contract
+  </h1>
+
+  <div class="fade-in fade-in-delay-2" style="display:flex; align-items:center; justify-content:center; gap:24px; margin-bottom:40px;">
+    <span style="font-family:'Manrope',sans-serif; font-size:0.85rem; color:#888888;">Fishbone Creatives</span>
+    <div style="width:5px; height:5px; background:#C9A962; transform:rotate(45deg);"></div>
+    <span style="font-family:'Manrope',sans-serif; font-size:0.85rem; color:#888888;">CJC Music</span>
+  </div>
+
+  <p class="fade-in fade-in-delay-3" style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#666666;">March 2026</p>
+</section>
+
+
+<!-- ============================================================
+     ARTICLES
+     ============================================================ -->
+<div style="max-width:780px; margin:0 auto; padding:0 32px;">
+
+  <!-- Article 1 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 1</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Parties</h2>
+    <div class="body-text fade-in fade-in-delay-2">
+      <p style="margin:0 0 16px 0;"><strong style="color:#FAF8F5;">Service Provider:</strong> Fishbone Creatives (hereinafter "the Provider")</p>
+      <p style="margin:0;"><strong style="color:#FAF8F5;">Client:</strong> CJC Music (hereinafter "the Client")</p>
+    </div>
+  </section>
+
+  <!-- Article 2 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 2</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Scope of Work</h2>
+    <p class="body-text fade-in fade-in-delay-2" style="margin:0 0 24px 0;">The Provider agrees to design and develop a custom website for the Client, including:</p>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Custom responsive website — mobile-first, performance-optimized</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Dynamic product catalog across 6 categories: Pro Audio, Instruments, Event Lighting, Studio Gear, LED & AV, DJ Equipment</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Authorized dealer showcase section</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>"Request a Quote" and "Request a Demo" conversion system</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Contact forms, Messenger integration, and Google Maps</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Basic SEO setup — meta tags, sitemap, Google-friendly structure</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Google Analytics integration</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Deployment to Vercel or the Client's preferred hosting</span></div>
+    </div>
+  </section>
+
+  <!-- Article 3 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 3</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Investment & Payment</h2>
+    <p class="body-text fade-in fade-in-delay-2" style="margin:0 0 32px 0;">The Client selects one of the following plans. The selected plan is indicated by the Client's signature below.</p>
+
+    <!-- Plan cards -->
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:1px; background:#1F1F1F; margin-bottom:32px;">
+
+      <!-- Starter -->
+      <div class="fade-in" style="background:#0A0A0A; padding:28px 24px;">
+        <p style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.25em; color:#666666; text-transform:uppercase; margin:0 0 16px;">Option A</p>
+        <p style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; color:#FAF8F5; margin:0 0 4px;">Starter Site</p>
+        <p style="font-family:'Playfair Display',Georgia,serif; font-size:1.5rem; font-weight:500; color:#FAF8F5; margin:0 0 12px;">₱8,000</p>
+        <p style="font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666; margin:0 0 16px;">One-time payment</p>
+        <div style="border-top:1px solid #1F1F1F; padding-top:12px;">
+          <p style="font-family:'Manrope',sans-serif; font-size:0.775rem; color:#888888; margin:0 0 6px;">1–3 page website</p>
+          <p style="font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666; margin:0;">50% on signing, 50% on delivery</p>
+        </div>
+      </div>
+
+      <!-- Growth -->
+      <div class="fade-in fade-in-delay-1" style="background:#0A0A0A; padding:28px 24px; border:1px solid #C9A962;">
+        <p style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 16px;">Option B</p>
+        <p style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; color:#FAF8F5; margin:0 0 4px;">Growth Site</p>
+        <p style="font-family:'Playfair Display',Georgia,serif; font-size:1.5rem; font-weight:500; color:#FAF8F5; margin:0;">₱7,000</p>
+        <p style="font-family:'Manrope',sans-serif; font-size:0.85rem; font-weight:600; color:#C9A962; margin:0 0 12px;">+ ₱1,500/month</p>
+        <div style="border-top:1px solid rgba(201,169,98,0.2); padding-top:12px;">
+          <p style="font-family:'Manrope',sans-serif; font-size:0.775rem; color:#888888; margin:0 0 6px;">3–5 pages, 2 product updates/mo</p>
+          <p style="font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666; margin:0;">Initial on signing, retainer after launch</p>
+        </div>
+      </div>
+
+      <!-- Pro -->
+      <div class="fade-in fade-in-delay-2" style="background:#0A0A0A; padding:28px 24px;">
+        <p style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.25em; color:#666666; text-transform:uppercase; margin:0 0 16px;">Option C</p>
+        <p style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; color:#FAF8F5; margin:0 0 4px;">Pro Site</p>
+        <p style="font-family:'Playfair Display',Georgia,serif; font-size:1.5rem; font-weight:500; color:#FAF8F5; margin:0;">₱6,000</p>
+        <p style="font-family:'Manrope',sans-serif; font-size:0.85rem; font-weight:600; color:#F87171; margin:0 0 12px;">+ ₱3,000/month</p>
+        <div style="border-top:1px solid #1F1F1F; padding-top:12px;">
+          <p style="font-family:'Manrope',sans-serif; font-size:0.775rem; color:#888888; margin:0 0 6px;">5+ pages, 4 updates/mo, priority support</p>
+          <p style="font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666; margin:0;">Initial on signing, retainer after launch</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Article 4 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 4</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Client Responsibilities</h2>
+    <p class="body-text fade-in" style="margin:0 0 24px;">The Client agrees to provide:</p>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Domain registration (₱800–₱1,500/year via Namecheap, GoDaddy, or preferred registrar)</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Hosting account (free via Vercel or paid hosting of choice)</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Product photos, descriptions, pricing, and brand assets needed for the website</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Timely feedback during the review phase — within 2 business days</span></div>
+    </div>
+    <div class="fade-in" style="margin-top:24px; border-left:2px solid rgba(201,169,98,0.3); padding-left:20px;">
+      <p style="font-family:'Manrope',sans-serif; font-size:0.825rem; color:#666666; margin:0; line-height:1.7; font-style:italic;">The Provider will guide the Client through domain and hosting setup. All accounts remain under the Client's ownership.</p>
+    </div>
+  </section>
+
+  <!-- Article 5 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 5</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Timeline</h2>
+    <p class="body-text fade-in" style="margin:0 0 24px;">Estimated delivery: <strong style="color:#FAF8F5;">5–7 business days</strong> from the date content and assets are received.</p>
+    <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:24px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span><strong style="color:#FAF8F5;">Day 1–2:</strong> Discovery & Planning</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span><strong style="color:#FAF8F5;">Day 3–5:</strong> Design & Development</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span><strong style="color:#FAF8F5;">Day 5–6:</strong> Review & Revisions (up to 2 rounds)</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span><strong style="color:#FAF8F5;">Day 7:</strong> Launch & Handover</span></div>
+    </div>
+    <div class="fade-in" style="border-left:2px solid rgba(201,169,98,0.3); padding-left:20px;">
+      <p style="font-family:'Manrope',sans-serif; font-size:0.825rem; color:#666666; margin:0; line-height:1.7; font-style:italic;">Timeline begins once the initial payment is received and all required content and assets are provided by the Client.</p>
+    </div>
+  </section>
+
+  <!-- Article 6 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 6</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Revisions</h2>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Up to <strong style="color:#FAF8F5;">2 rounds of revisions</strong> are included in all plans</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>A "revision" covers changes to layout, content placement, colors, or typography</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Structural changes — new pages, features, or functionality not in the original scope — will be quoted separately</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Additional revision rounds beyond the included 2 will be billed at <strong style="color:#FAF8F5;">₱500 per round</strong></span></div>
+    </div>
+  </section>
+
+  <!-- Article 7 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 7</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Ownership & Intellectual Property</h2>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Upon full payment, the Client owns all rights to the website code, design, and content</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>The Client retains full ownership of their domain, hosting account, and all credentials</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>The Provider may display the completed project in their portfolio unless otherwise agreed in writing</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Third-party assets (fonts, stock images, libraries) remain subject to their respective licenses</span></div>
+    </div>
+  </section>
+
+  <!-- Article 8 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 8</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Ongoing Maintenance</h2>
+    <p class="body-text fade-in" style="margin:0 0 8px; font-style:italic; color:#666666;">Applies to Growth and Pro plans only.</p>
+    <div style="display:flex; flex-direction:column; gap:14px; margin-top:16px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Monthly retainer covers the specified number of product updates (price changes, availability, new items, etc.)</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Unused updates do not roll over to the following month</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>The retainer may be cancelled with <strong style="color:#FAF8F5;">15 days written notice</strong> before the next billing cycle</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Upon cancellation, the Client retains full access to and ownership of the website</span></div>
+    </div>
+  </section>
+
+  <!-- Article 9 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 9</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Termination</h2>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Either party may terminate this agreement with <strong style="color:#FAF8F5;">15 days written notice</strong></span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>If the Client terminates before completion, all work completed will be delivered; payments made are non-refundable but no further payments are required</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>If the Provider terminates, all work and assets completed will be delivered to the Client at no additional charge</span></div>
+    </div>
+  </section>
+
+  <!-- Article 10 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 10</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Confidentiality</h2>
+    <p class="body-text fade-in" style="margin:0;">Both parties agree to keep confidential any proprietary information shared during the project, including but not limited to business strategies, pricing, customer data, and technical details. This obligation survives the termination of this agreement.</p>
+  </section>
+
+  <!-- Article 11 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 11</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Limitation of Liability</h2>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>The Provider's total liability shall not exceed the total amount paid by the Client under this agreement</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>The Provider is not liable for any indirect, incidental, or consequential damages</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>The Provider is not responsible for downtime caused by third-party services (hosting provider, domain registrar, etc.)</span></div>
+    </div>
+  </section>
+
+  <!-- Article 12 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 12</span>
+    <h2 class="article-title fade-in fade-in-delay-1">General Provisions</h2>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>This agreement constitutes the entire understanding between the parties</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>Any amendments must be made in writing and signed by both parties</span></div>
+      <div class="list-item fade-in"><div class="list-bullet"></div><span>This agreement is governed by the laws of the Republic of the Philippines</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SIGNATURE SECTION
+       ============================================================ -->
+  <section style="padding:80px 0 40px;">
+    <div class="fade-in" style="margin-bottom:56px;">
+      <span class="article-num">Selected Plan</span>
+      <div style="display:flex; flex-wrap:wrap; gap:32px; margin-top:16px;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="plan-check"></div>
+          <span style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Starter Site</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="plan-check"></div>
+          <span style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Growth Site</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="plan-check"></div>
+          <span style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Pro Site</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-in" style="display:grid; grid-template-columns:1fr 1fr; gap:64px;">
+      <!-- Provider -->
+      <div>
+        <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 8px;">Service Provider</p>
+        <p style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; color:#FAF8F5; margin:0 0 32px;">Fishbone Creatives</p>
+        <div class="sig-line"></div>
+        <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#888888; margin:0 0 24px;">Authorized Representative</p>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#666666; margin:0;">Date:</p>
+          <div style="flex:1; border-bottom:1px solid #1F1F1F; height:20px;"></div>
+        </div>
+      </div>
+
+      <!-- Client -->
+      <div>
+        <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 8px;">Client</p>
+        <p style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; color:#FAF8F5; margin:0 0 32px;">CJC Music</p>
+        <div class="sig-line"></div>
+        <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#888888; margin:0 0 24px;">Authorized Representative</p>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#666666; margin:0;">Date:</p>
+          <div style="flex:1; border-bottom:1px solid #1F1F1F; height:20px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section style="padding:32px 0 80px; border-top:1px solid #1F1F1F;">
+    <div class="fade-in" style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px;">
+      <p style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#444444; margin:0;">&copy; 2026 Fishbone Creatives. All rights reserved.</p>
+      <p style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#444444; margin:0; font-style:italic;">This contract is valid for 30 days. Pricing may be adjusted after this period.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  lucide.createIcons();
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+  );
+
+  document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+
+  // Trigger header immediately
+  document.querySelectorAll('section:first-of-type .fade-in').forEach((el) => {
+    setTimeout(() => el.classList.add('visible'), 100);
+  });
+</script>
+
+</body>
+</html>

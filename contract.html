@@ -238,6 +238,23 @@
       font-weight: 700;
     }
 
+    .mgmt-option:hover {
+      background: #111111 !important;
+    }
+    .mgmt-option.selected {
+      background: rgba(201,169,98,0.04) !important;
+    }
+    .mgmt-check.selected {
+      border-color: #C9A962 !important;
+      background: rgba(201,169,98,0.15);
+    }
+    .mgmt-check.selected::after {
+      content: '✓';
+      color: #C9A962;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
     .domain-option:hover, .hosting-option:hover {
       background: #111111 !important;
     }
@@ -317,7 +334,12 @@
       .plan-price { color: #666 !important; }
       .addon-option { background: #fff !important; border-bottom: 1px solid #ddd !important; }
       .addon-option.selected { background: #f5f5f0 !important; }
-      .addon-check, .domain-check, .hosting-check { border-color: #333 !important; }
+      .addon-check, .domain-check, .hosting-check, .mgmt-check { border-color: #333 !important; }
+      .mgmt-option { background: #fff !important; }
+      .mgmt-option.selected { background: #f5f5f0 !important; }
+      .mgmt-check.selected { background: #e8e4d8 !important; }
+      .mgmt-check.selected::after { color: #333 !important; }
+      #hosting-total { border-color: #ccc !important; background: #f9f9f5 !important; }
       .domain-option, .hosting-option { background: #fff !important; }
       .domain-option.selected, .hosting-option.selected { background: #f5f5f0 !important; }
       .domain-check.selected, .hosting-check.selected { background: #e8e4d8 !important; }
@@ -545,10 +567,24 @@
         </div>
       </div>
 
+      <!-- Social Media Design -->
+      <div class="addon-option fade-in fade-in-delay-3" onclick="toggleAddon(this)">
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div class="addon-check"></div>
+          <div style="flex:1;">
+            <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:8px;">
+              <h3 style="font-family:'Playfair Display',Georgia,serif; font-size:1rem; font-weight:500; color:#FAF8F5; margin:0;">Social Media Design</h3>
+              <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; font-weight:500; color:#C9A962;">₱350<span style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#666666;">/design</span></span>
+            </div>
+            <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; line-height:1.7; color:#666666; margin:0;">Design-only service for social media posts — branded graphics for Facebook, Instagram, or promotions. No scheduling or management included. Perfect for clients who handle their own posting.</p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <div class="fade-in" style="margin-top:24px; border-left:2px solid rgba(201,169,98,0.3); padding-left:20px;">
-      <p style="font-family:'Manrope',sans-serif; font-size:0.825rem; color:#666666; margin:0; line-height:1.7; font-style:italic;">Add-ons begin after website launch. Bundle all three for <strong style="color:#C9A962;">₱6,500/month</strong> (save ₱1,000).</p>
+      <p style="font-family:'Manrope',sans-serif; font-size:0.825rem; color:#666666; margin:0; line-height:1.7; font-style:italic;">Add-ons begin after website launch. Bundle the first three monthly services for <strong style="color:#C9A962;">₱6,500/month</strong> (save ₱1,000).</p>
     </div>
   </section>
 
@@ -640,13 +676,13 @@
 
     <!-- Hosting Options -->
     <div class="fade-in" style="margin-bottom:36px;">
-      <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 16px;">2 — Web Hosting</p>
-      <p class="body-text" style="margin:0 0 20px;">Hosting is set up and managed by Fishbone Creatives on the Client's behalf. Some Philippine ISPs (notably PLDT) have been known to block free hosting platforms, so we recommend dedicated hosting for reliable access. Select a hosting option below:</p>
+      <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 16px;">2A — Choose a Host</p>
+      <p class="body-text" style="margin:0 0 20px;">Some Philippine ISPs (notably PLDT) have been known to block free hosting platforms, so we recommend dedicated hosting for reliable access.</p>
 
       <div style="display:flex; flex-direction:column; gap:1px; background:#1F1F1F; margin-bottom:20px;">
 
         <!-- Hostinger -->
-        <div class="hosting-option fade-in" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+        <div class="hosting-option fade-in" data-price="800" data-label="Hostinger — $13.99/mo (~₱800)" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
             <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
             <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Hostinger</span>
@@ -665,7 +701,7 @@
         </div>
 
         <!-- Namecheap -->
-        <div class="hosting-option fade-in fade-in-delay-1" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+        <div class="hosting-option fade-in fade-in-delay-1" data-price="280" data-label="Namecheap — $4.88/mo (~₱280)" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
             <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
             <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Namecheap</span>
@@ -684,7 +720,7 @@
         </div>
 
         <!-- Vercel Free -->
-        <div class="hosting-option fade-in fade-in-delay-2" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
+        <div class="hosting-option fade-in fade-in-delay-2" data-price="0" data-label="Vercel (Free Tier) — ₱0" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
           <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
             <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
             <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Vercel (Free Tier)</span>
@@ -702,30 +738,50 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Management Style -->
+      <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:24px 0 16px;">2B — Management Style</p>
+
+      <div style="display:flex; flex-direction:column; gap:1px; background:#1F1F1F; margin-bottom:20px;">
+
+        <!-- Self-Managed -->
+        <div class="mgmt-option fade-in" data-mgmt="self" onclick="selectMgmt(this)" style="background:#0A0A0A; padding:18px 24px; cursor:pointer; transition:all 0.3s ease;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="mgmt-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
+            <div style="flex:1;">
+              <span style="font-family:'Playfair Display',Georgia,serif; font-size:1rem; color:#FAF8F5;">Self-Managed</span>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.775rem; color:#666666; margin:4px 0 0;">You manage your own hosting account. We'll guide you through setup and hand over all credentials.</p>
+            </div>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.85rem; font-weight:600; color:#888888; flex-shrink:0;">+ ₱0</span>
+          </div>
+        </div>
+
         <!-- Agency-Managed -->
-        <div class="hosting-option fade-in fade-in-delay-3" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease; border-top:1px solid rgba(201,169,98,0.15);">
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
-            <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
-            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Agency-Managed Hosting</span>
-            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#C9A962; text-transform:uppercase; border:1px solid rgba(201,169,98,0.3); padding:2px 8px; margin-left:auto;">Hands-Free</span>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Monthly</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#C9A962; margin:0;">₱1,000/mo</p>
+        <div class="mgmt-option fade-in fade-in-delay-1" data-mgmt="agency" onclick="selectMgmt(this)" style="background:#0A0A0A; padding:18px 24px; cursor:pointer; transition:all 0.3s ease;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <div class="mgmt-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
+            <div style="flex:1;">
+              <span style="font-family:'Playfair Display',Georgia,serif; font-size:1rem; color:#FAF8F5;">Agency-Managed</span>
+              <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#C9A962; text-transform:uppercase; border:1px solid rgba(201,169,98,0.3); padding:2px 8px; margin-left:8px;">Hands-Free</span>
+              <p style="font-family:'Manrope',sans-serif; font-size:0.775rem; color:#666666; margin:4px 0 0;">Fishbone Creatives handles everything — setup, renewals, SSL, DNS, monitoring. Pay in PHP via GCash or bank transfer. No USD billing, no currency surprises.</p>
             </div>
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Why</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#888888; margin:0;">Fishbone Creatives handles everything — hosting setup, renewals, SSL, DNS, and monitoring. Fixed peso rate, no currency surprises. Pay in PHP via GCash or bank transfer.</p>
-            </div>
-          </div>
-          <div style="padding-left:30px; margin-top:12px;">
-            <p style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#666666; margin:0; font-style:italic;">Includes: Hostinger Business hosting + management fee. The Client may request migration to their own hosting account at any time.</p>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.85rem; font-weight:600; color:#C9A962; flex-shrink:0;">+ ₱250</span>
           </div>
         </div>
 
       </div>
-      <p style="font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666; margin:0; font-style:italic;">For options 1–3, the Provider will guide the Client through setup. For option 4, hosting is fully managed by Fishbone Creatives on the Client's behalf.</p>
+
+      <!-- Hosting Total -->
+      <div id="hosting-total" style="display:none; background:#0A0A0A; border:1px solid rgba(201,169,98,0.3); padding:16px 24px; margin-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-family:'Manrope',sans-serif; font-size:0.8rem; font-weight:600; color:#888888;">Monthly Hosting Total</span>
+          <span id="hosting-total-amount" style="font-family:'Playfair Display',Georgia,serif; font-size:1.2rem; font-weight:500; color:#C9A962;"></span>
+        </div>
+        <p id="hosting-total-breakdown" style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#666666; margin:6px 0 0;"></p>
+      </div>
+
+      <p style="font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666; margin:0; font-style:italic;">The Client may request migration to their own hosting account at any time.</p>
     </div>
 
     <!-- Other Responsibilities -->
@@ -1043,6 +1099,39 @@
     });
     el.classList.add('selected');
     el.querySelector('.hosting-check').classList.add('selected');
+    updateHostingTotal();
+  }
+
+  // Management style selection (radio)
+  function selectMgmt(el) {
+    document.querySelectorAll('.mgmt-option').forEach(opt => {
+      opt.classList.remove('selected');
+      opt.querySelector('.mgmt-check').classList.remove('selected');
+    });
+    el.classList.add('selected');
+    el.querySelector('.mgmt-check').classList.add('selected');
+    updateHostingTotal();
+  }
+
+  // Calculate and display hosting total
+  function updateHostingTotal() {
+    const host = document.querySelector('.hosting-option.selected');
+    const mgmt = document.querySelector('.mgmt-option.selected');
+    const totalEl = document.getElementById('hosting-total');
+    const amountEl = document.getElementById('hosting-total-amount');
+    const breakdownEl = document.getElementById('hosting-total-breakdown');
+
+    if (!host || !mgmt) { totalEl.style.display = 'none'; return; }
+
+    const hostPrice = parseInt(host.dataset.price);
+    const hostLabel = host.dataset.label;
+    const isAgency = mgmt.dataset.mgmt === 'agency';
+    const serviceFee = isAgency ? 250 : 0;
+    const total = hostPrice + serviceFee;
+
+    totalEl.style.display = 'block';
+    amountEl.textContent = '₱' + total.toLocaleString() + '/month';
+    breakdownEl.textContent = hostLabel + (isAgency ? ' + ₱250 agency management fee' : ' (self-managed)');
   }
 
   // Plan selection (radio behavior — only one at a time)
@@ -1102,7 +1191,11 @@
     const selectedDomain = document.querySelector('.domain-option.selected');
     const domainName = selectedDomain ? selectedDomain.querySelector('span[style*="font-size:1.05rem"]').textContent : 'Not selected';
     const selectedHostingEl = document.querySelector('.hosting-option.selected');
-    const hostingName = selectedHostingEl ? selectedHostingEl.querySelector('span[style*="font-size:1.05rem"]').textContent : 'Not selected';
+    const selectedMgmt = document.querySelector('.mgmt-option.selected');
+    const hostLabel = selectedHostingEl ? selectedHostingEl.dataset.label : 'Not selected';
+    const mgmtLabel = selectedMgmt ? (selectedMgmt.dataset.mgmt === 'agency' ? 'Agency-Managed (+₱250)' : 'Self-Managed') : 'Not selected';
+    const hostingTotal = document.getElementById('hosting-total-amount');
+    const hostingName = hostLabel + ' | ' + mgmtLabel + (hostingTotal ? ' | Total: ' + hostingTotal.textContent : '');
     const addons = Array.from(document.querySelectorAll('.addon-option.selected')).map(el => {
       return el.querySelector('h3').textContent + ' — ' + el.querySelector('span[style*="font-size:1.1rem"]').textContent.trim();
     });

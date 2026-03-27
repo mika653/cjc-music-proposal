@@ -151,6 +151,40 @@
       color: #C9A962;
     }
 
+    .addon-option {
+      background: #0A0A0A;
+      padding: 28px 28px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .addon-option:hover {
+      background: #111111;
+    }
+    .addon-option.selected {
+      background: rgba(201,169,98,0.04);
+    }
+    .addon-check {
+      width: 20px;
+      height: 20px;
+      border: 1.5px solid #666666;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.3s ease;
+    }
+    .addon-check.selected {
+      border-color: #C9A962;
+      background: rgba(201,169,98,0.15);
+    }
+    .addon-check.selected::after {
+      content: '✓';
+      color: #C9A962;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
     .print-btn {
       position: fixed;
       bottom: 32px;
@@ -196,6 +230,11 @@
       .plan-option.selected .plan-check::after { color: #333 !important; }
       .plan-label { color: #333 !important; }
       .plan-price { color: #666 !important; }
+      .addon-option { background: #fff !important; border-bottom: 1px solid #ddd !important; }
+      .addon-option.selected { background: #f5f5f0 !important; }
+      .addon-check { border-color: #333 !important; }
+      .addon-check.selected { background: #e8e4d8 !important; }
+      .addon-check.selected::after { color: #333 !important; }
       section {
         border-color: #ddd !important;
         background: #fff !important;
@@ -339,9 +378,67 @@
     </div>
   </section>
 
-  <!-- Article 4 -->
+  <!-- Article 4: Add-On Services -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
     <span class="article-num fade-in">Article 4</span>
+    <h2 class="article-title fade-in fade-in-delay-1">Add-On Services</h2>
+    <p class="body-text fade-in fade-in-delay-2" style="margin:0 0 8px;">Available exclusively to <strong style="color:#FAF8F5;">Growth</strong> and <strong style="color:#FAF8F5;">Pro</strong> plan subscribers. Add-ons are billed monthly alongside the retainer and may be cancelled with 15 days written notice.</p>
+    <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#666666; margin:0 0 28px; font-style:italic;">Select any combination below:</p>
+
+    <div style="display:flex; flex-direction:column; gap:1px; background:#1F1F1F;">
+
+      <!-- Social Media Management -->
+      <div class="addon-option fade-in" onclick="toggleAddon(this)">
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div class="addon-check"></div>
+          <div style="flex:1;">
+            <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:8px;">
+              <h3 style="font-family:'Playfair Display',Georgia,serif; font-size:1rem; font-weight:500; color:#FAF8F5; margin:0;">Social Media Management</h3>
+              <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; font-weight:500; color:#C9A962;">₱3,000<span style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#666666;">/month</span></span>
+            </div>
+            <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; line-height:1.7; color:#666666; margin:0;">Content calendar, post creation & scheduling for Facebook and Instagram. Includes 8 branded posts per month with engagement monitoring.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI-Powered SEO -->
+      <div class="addon-option fade-in fade-in-delay-1" onclick="toggleAddon(this)">
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div class="addon-check"></div>
+          <div style="flex:1;">
+            <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:8px;">
+              <h3 style="font-family:'Playfair Display',Georgia,serif; font-size:1rem; font-weight:500; color:#FAF8F5; margin:0;">AI-Powered SEO</h3>
+              <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; font-weight:500; color:#C9A962;">₱2,500<span style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#666666;">/month</span></span>
+            </div>
+            <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; line-height:1.7; color:#666666; margin:0;">AI-driven keyword research, meta tag optimization, schema markup, and monthly ranking reports. Keeps your site climbing Google results.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog & Content Writing -->
+      <div class="addon-option fade-in fade-in-delay-2" onclick="toggleAddon(this)">
+        <div style="display:flex; align-items:flex-start; gap:16px;">
+          <div class="addon-check"></div>
+          <div style="flex:1;">
+            <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:8px; margin-bottom:8px;">
+              <h3 style="font-family:'Playfair Display',Georgia,serif; font-size:1rem; font-weight:500; color:#FAF8F5; margin:0;">Blog & Content Writing</h3>
+              <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.1rem; font-weight:500; color:#C9A962;">₱2,000<span style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#666666;">/month</span></span>
+            </div>
+            <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; line-height:1.7; color:#666666; margin:0;">2 SEO-optimized blog posts per month — product spotlights, buying guides, or industry news. Drives organic traffic and builds authority.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fade-in" style="margin-top:24px; border-left:2px solid rgba(201,169,98,0.3); padding-left:20px;">
+      <p style="font-family:'Manrope',sans-serif; font-size:0.825rem; color:#666666; margin:0; line-height:1.7; font-style:italic;">Add-ons begin after website launch. Bundle all three for <strong style="color:#C9A962;">₱6,500/month</strong> (save ₱1,000).</p>
+    </div>
+  </section>
+
+  <!-- Article 5 -->
+  <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
+    <span class="article-num fade-in">Article 5</span>
     <h2 class="article-title fade-in fade-in-delay-1">Client Responsibilities</h2>
     <p class="body-text fade-in" style="margin:0 0 24px;">The Client agrees to provide:</p>
     <div style="display:flex; flex-direction:column; gap:14px;">
@@ -355,9 +452,9 @@
     </div>
   </section>
 
-  <!-- Article 5 -->
+  <!-- Article 6 -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
-    <span class="article-num fade-in">Article 5</span>
+    <span class="article-num fade-in">Article 6</span>
     <h2 class="article-title fade-in fade-in-delay-1">Timeline</h2>
     <p class="body-text fade-in" style="margin:0 0 24px;">Estimated delivery: <strong style="color:#FAF8F5;">5–7 business days</strong> from the date content and assets are received.</p>
     <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:24px;">
@@ -371,9 +468,9 @@
     </div>
   </section>
 
-  <!-- Article 6 -->
+  <!-- Article 7 -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
-    <span class="article-num fade-in">Article 6</span>
+    <span class="article-num fade-in">Article 7</span>
     <h2 class="article-title fade-in fade-in-delay-1">Revisions</h2>
     <div style="display:flex; flex-direction:column; gap:14px;">
       <div class="list-item fade-in"><div class="list-bullet"></div><span>Up to <strong style="color:#FAF8F5;">2 rounds of revisions</strong> are included in all plans</span></div>
@@ -383,9 +480,9 @@
     </div>
   </section>
 
-  <!-- Article 7 -->
+  <!-- Article 8 -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
-    <span class="article-num fade-in">Article 7</span>
+    <span class="article-num fade-in">Article 8</span>
     <h2 class="article-title fade-in fade-in-delay-1">Ownership & Intellectual Property</h2>
     <div style="display:flex; flex-direction:column; gap:14px;">
       <div class="list-item fade-in"><div class="list-bullet"></div><span>Upon full payment, the Client owns all rights to the website code, design, and content</span></div>
@@ -395,9 +492,9 @@
     </div>
   </section>
 
-  <!-- Article 8 -->
+  <!-- Article 9 -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
-    <span class="article-num fade-in">Article 8</span>
+    <span class="article-num fade-in">Article 9</span>
     <h2 class="article-title fade-in fade-in-delay-1">Ongoing Maintenance</h2>
     <p class="body-text fade-in" style="margin:0 0 8px; font-style:italic; color:#666666;">Applies to Growth and Pro plans only.</p>
     <div style="display:flex; flex-direction:column; gap:14px; margin-top:16px;">
@@ -408,9 +505,9 @@
     </div>
   </section>
 
-  <!-- Article 9 -->
+  <!-- Article 10 -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
-    <span class="article-num fade-in">Article 9</span>
+    <span class="article-num fade-in">Article 10</span>
     <h2 class="article-title fade-in fade-in-delay-1">Termination</h2>
     <div style="display:flex; flex-direction:column; gap:14px;">
       <div class="list-item fade-in"><div class="list-bullet"></div><span>Either party may terminate this agreement with <strong style="color:#FAF8F5;">15 days written notice</strong></span></div>
@@ -419,16 +516,16 @@
     </div>
   </section>
 
-  <!-- Article 10 -->
+  <!-- Article 11 -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
-    <span class="article-num fade-in">Article 10</span>
+    <span class="article-num fade-in">Article 11</span>
     <h2 class="article-title fade-in fade-in-delay-1">Confidentiality</h2>
     <p class="body-text fade-in" style="margin:0;">Both parties agree to keep confidential any proprietary information shared during the project, including but not limited to business strategies, pricing, customer data, and technical details. This obligation survives the termination of this agreement.</p>
   </section>
 
-  <!-- Article 11 -->
+  <!-- Article 12 -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
-    <span class="article-num fade-in">Article 11</span>
+    <span class="article-num fade-in">Article 12</span>
     <h2 class="article-title fade-in fade-in-delay-1">Limitation of Liability</h2>
     <div style="display:flex; flex-direction:column; gap:14px;">
       <div class="list-item fade-in"><div class="list-bullet"></div><span>The Provider's total liability shall not exceed the total amount paid by the Client under this agreement</span></div>
@@ -437,9 +534,9 @@
     </div>
   </section>
 
-  <!-- Article 12 -->
+  <!-- Article 13 -->
   <section style="padding:64px 0; border-bottom:1px solid #1F1F1F;">
-    <span class="article-num fade-in">Article 12</span>
+    <span class="article-num fade-in">Article 13</span>
     <h2 class="article-title fade-in fade-in-delay-1">General Provisions</h2>
     <div style="display:flex; flex-direction:column; gap:14px;">
       <div class="list-item fade-in"><div class="list-bullet"></div><span>This agreement constitutes the entire understanding between the parties</span></div>
@@ -484,6 +581,13 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Selected Add-Ons summary -->
+    <div class="fade-in" id="addons-summary" style="margin-bottom:56px; display:none;">
+      <span class="article-num">Selected Add-Ons</span>
+      <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#666666; margin:8px 0 12px;">Available with Growth and Pro plans only. Select add-ons in Article 4 above.</p>
+      <div id="addons-summary-list" style="font-family:'Manrope',sans-serif; font-size:0.85rem; color:#888888;"></div>
     </div>
 
     <div class="fade-in" style="display:grid; grid-template-columns:1fr 1fr; gap:64px;">
@@ -541,6 +645,30 @@
   document.querySelectorAll('section:first-of-type .fade-in').forEach((el) => {
     setTimeout(() => el.classList.add('visible'), 100);
   });
+
+  // Add-on selection (checkbox behavior — multiple allowed)
+  function toggleAddon(el) {
+    el.classList.toggle('selected');
+    el.querySelector('.addon-check').classList.toggle('selected');
+    updateAddonsSummary();
+  }
+
+  function updateAddonsSummary() {
+    const selected = document.querySelectorAll('.addon-option.selected');
+    const summary = document.getElementById('addons-summary');
+    const list = document.getElementById('addons-summary-list');
+    if (selected.length === 0) {
+      summary.style.display = 'none';
+      return;
+    }
+    summary.style.display = 'block';
+    const names = Array.from(selected).map(el => {
+      const title = el.querySelector('h3').textContent;
+      const price = el.querySelector('span[style*="font-size:1.1rem"]').textContent.trim();
+      return '<div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;"><div style="width:5px; height:5px; background:#C9A962; transform:rotate(45deg); flex-shrink:0;"></div><span>' + title + ' — <strong style="color:#C9A962;">' + price + '</strong></span></div>';
+    });
+    list.innerHTML = names.join('');
+  }
 
   // Plan selection (radio behavior — only one at a time)
   function selectPlan(el) {

@@ -238,17 +238,17 @@
       font-weight: 700;
     }
 
-    .domain-option:hover, .hosting-option:hover {
+    .domain-option:hover {
       background: #111111 !important;
     }
-    .domain-option.selected, .hosting-option.selected {
+    .domain-option.selected {
       background: rgba(201,169,98,0.04) !important;
     }
-    .domain-check.selected, .hosting-check.selected {
+    .domain-check.selected {
       border-color: #C9A962 !important;
       background: rgba(201,169,98,0.15);
     }
-    .domain-check.selected::after, .hosting-check.selected::after {
+    .domain-check.selected::after {
       content: '✓';
       color: #C9A962;
       font-size: 12px;
@@ -317,11 +317,11 @@
       .plan-price { color: #666 !important; }
       .addon-option { background: #fff !important; border-bottom: 1px solid #ddd !important; }
       .addon-option.selected { background: #f5f5f0 !important; }
-      .addon-check, .domain-check, .hosting-check { border-color: #333 !important; }
-      .domain-option, .hosting-option { background: #fff !important; }
-      .domain-option.selected, .hosting-option.selected { background: #f5f5f0 !important; }
-      .domain-check.selected, .hosting-check.selected { background: #e8e4d8 !important; }
-      .domain-check.selected::after, .hosting-check.selected::after { color: #333 !important; }
+      .addon-check, .domain-check { border-color: #333 !important; }
+      .domain-option { background: #fff !important; }
+      .domain-option.selected { background: #f5f5f0 !important; }
+      .domain-check.selected { background: #e8e4d8 !important; }
+      .domain-check.selected::after { color: #333 !important; }
       .addon-check.selected { background: #e8e4d8 !important; }
       .addon-check.selected::after { color: #333 !important; }
       section {
@@ -641,79 +641,17 @@
     <!-- Hosting Options -->
     <div class="fade-in" style="margin-bottom:36px;">
       <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:700; letter-spacing:0.25em; color:#C9A962; text-transform:uppercase; margin:0 0 16px;">2 — Web Hosting</p>
-      <p class="body-text" style="margin:0 0 20px;">Some Philippine ISPs (notably PLDT) have been known to intermittently block Vercel-hosted sites. To ensure reliable access for all visitors, we recommend paid hosting:</p>
+      <p class="body-text" style="margin:0 0 20px;">Web hosting is provided and managed by Fishbone Creatives via Hostinger (Singapore data center for fast Philippine speeds, free SSL, 99.9% uptime). Some Philippine ISPs have been known to block free hosting platforms, so dedicated hosting ensures reliable access for all visitors.</p>
 
-      <div style="display:flex; flex-direction:column; gap:1px; background:#1F1F1F; margin-bottom:20px;">
-
-        <!-- Hostinger -->
-        <div class="hosting-option fade-in" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
-            <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
-            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Hostinger</span>
-            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#C9A962; text-transform:uppercase; border:1px solid rgba(201,169,98,0.3); padding:2px 8px; margin-left:auto;">Recommended</span>
+      <div class="fade-in" style="background:#0A0A0A; border:1px solid #1F1F1F; padding:24px 28px; margin-bottom:20px;">
+        <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:12px;">
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Managed Hosting</span>
+            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#C9A962; text-transform:uppercase; border:1px solid rgba(201,169,98,0.3); padding:2px 8px;">Via Hostinger</span>
           </div>
-          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Cost</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱109/month</p>
-            </div>
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱179/month</p>
-            </div>
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Why</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#888888; margin:0;">Singapore data center = fast PH speeds. Free SSL. 99.9% uptime.</p>
-            </div>
-          </div>
+          <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.3rem; font-weight:500; color:#C9A962;">$12.99<span style="font-family:'Manrope',sans-serif; font-size:0.75rem; color:#666666;">/month (~₱740)</span></span>
         </div>
-
-        <!-- Namecheap -->
-        <div class="hosting-option fade-in fade-in-delay-1" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
-            <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
-            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Namecheap Hosting</span>
-            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#888888; text-transform:uppercase; border:1px solid #333; padding:2px 8px; margin-left:auto;">Bundle with Domain</span>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Cost</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱112/month</p>
-            </div>
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">~₱200/month</p>
-            </div>
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Why</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#888888; margin:0;">Convenient if domain is also on Namecheap. Free SSL. 100% uptime guarantee.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Vercel Free -->
-        <div class="hosting-option fade-in fade-in-delay-2" onclick="selectHosting(this)" style="background:#0A0A0A; padding:20px 24px; cursor:pointer; transition:all 0.3s ease;">
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:10px;">
-            <div class="hosting-check" style="width:18px; height:18px; border:1.5px solid #666666; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; transition:all 0.3s ease;"></div>
-            <span style="font-family:'Playfair Display',Georgia,serif; font-size:1.05rem; color:#FAF8F5;">Vercel (Free Tier)</span>
-            <span style="font-family:'Manrope',sans-serif; font-size:0.6rem; font-weight:700; letter-spacing:0.15em; color:#888888; text-transform:uppercase; border:1px solid #333; padding:2px 8px; margin-left:auto;">Free</span>
-          </div>
-          <div style="display:flex; flex-wrap:wrap; gap:24px; padding-left:30px;">
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Cost</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">₱0</p>
-            </div>
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">Renewal</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.9rem; font-weight:600; color:#FAF8F5; margin:0;">₱0</p>
-            </div>
-            <div>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.65rem; font-weight:600; letter-spacing:0.1em; color:#666666; text-transform:uppercase; margin:0 0 2px;">⚠️ Note</p>
-              <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#F87171; margin:0;">Some PH internet providers (PLDT) may intermittently block access to Vercel-hosted sites.</p>
-            </div>
-          </div>
-        </div>
-
+        <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; line-height:1.7; color:#666666; margin:0;">Billed monthly to the Client. Hosting is set up and maintained by the Provider. Includes free SSL certificate, daily backups, and 99.9% uptime guarantee. The Client may request migration to their own hosting account at any time.</p>
       </div>
     </div>
 
@@ -1024,16 +962,6 @@
     el.querySelector('.domain-check').classList.add('selected');
   }
 
-  // Hosting selection (radio — one at a time)
-  function selectHosting(el) {
-    document.querySelectorAll('.hosting-option').forEach(opt => {
-      opt.classList.remove('selected');
-      opt.querySelector('.hosting-check').classList.remove('selected');
-    });
-    el.classList.add('selected');
-    el.querySelector('.hosting-check').classList.add('selected');
-  }
-
   // Plan selection (radio behavior — only one at a time)
   function selectPlan(el) {
     document.querySelectorAll('.plan-option').forEach(opt => {
@@ -1090,8 +1018,7 @@
     const planPrice = selectedPlan.querySelector('.plan-price').textContent;
     const selectedDomain = document.querySelector('.domain-option.selected');
     const domainName = selectedDomain ? selectedDomain.querySelector('span[style*="font-size:1.05rem"]').textContent : 'Not selected';
-    const selectedHostingEl = document.querySelector('.hosting-option.selected');
-    const hostingName = selectedHostingEl ? selectedHostingEl.querySelector('span[style*="font-size:1.05rem"]').textContent : 'Not selected';
+    const hostingName = 'Managed Hosting via Hostinger — $12.99/mo';
     const addons = Array.from(document.querySelectorAll('.addon-option.selected')).map(el => {
       return el.querySelector('h3').textContent + ' — ' + el.querySelector('span[style*="font-size:1.1rem"]').textContent.trim();
     });

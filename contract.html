@@ -238,6 +238,17 @@
       font-weight: 700;
     }
 
+    #submit-contract-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201,169,98,0.25);
+    }
+    #submit-contract-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
     .print-btn {
       position: fixed;
       bottom: 32px;
@@ -271,7 +282,7 @@
         transform: none !important;
         transition: none !important;
       }
-      .print-btn, .back-link { display: none !important; }
+      .print-btn, .back-link, #submit-contract-btn, #submit-status, #submit-contract-btn + p { display: none !important; }
       .article-title { color: #111 !important; }
       .article-num { color: #8B7340 !important; }
       .body-text, .list-item { color: #333 !important; }
@@ -709,6 +720,16 @@
         </div>
       </div>
     </div>
+
+    <!-- Submit Button -->
+    <div class="fade-in" style="margin-top:56px; text-align:center;">
+      <div id="submit-status" style="margin-bottom:20px;"></div>
+      <button id="submit-contract-btn" onclick="submitContract()" style="font-family:'Manrope',sans-serif; font-size:0.8rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:#0A0A0A; background:linear-gradient(135deg, #C9A962 0%, #E8CC8A 50%, #C9A962 100%); border:none; padding:18px 48px; cursor:pointer; transition:all 0.3s ease; display:inline-flex; align-items:center; gap:10px;">
+        <i data-lucide="send" style="width:16px; height:16px; stroke-width:2;"></i>
+        Submit Signed Contract
+      </button>
+      <p style="font-family:'Manrope',sans-serif; font-size:0.7rem; color:#444444; margin:16px 0 0;">A copy of this signed contract will be sent to Fishbone Creatives for confirmation.</p>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -818,7 +839,138 @@
     el.classList.add('selected');
     el.querySelector('.plan-check').classList.add('selected');
   }
+
+  // Check if canvas has been drawn on
+  function canvasHasSignature(id) {
+    const canvas = document.getElementById(id);
+    const ctx = canvas.getContext('2d');
+    const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+    for (let i = 3; i < data.length; i += 4) {
+      if (data[i] > 0) return true;
+    }
+    return false;
+  }
+
+  // Submit signed contract via Web3Forms
+  async function submitContract() {
+    const status = document.getElementById('submit-status');
+    const btn = document.getElementById('submit-contract-btn');
+
+    // Validate required fields
+    const selectedPlan = document.querySelector('.plan-option.selected');
+    const names = document.querySelectorAll('.sig-name');
+    const dates = document.querySelectorAll('.sig-date');
+    const providerName = names[0].value.trim();
+    const clientName = names[1].value.trim();
+    const providerDate = dates[0].value;
+    const clientDate = dates[1].value;
+
+    const errors = [];
+    if (!selectedPlan) errors.push('Please select a plan');
+    if (!providerName) errors.push('Provider name is required');
+    if (!clientName) errors.push('Client name is required');
+    if (!providerDate) errors.push('Provider date is required');
+    if (!clientDate) errors.push('Client date is required');
+    if (!canvasHasSignature('sig-provider')) errors.push('Provider signature is required');
+    if (!canvasHasSignature('sig-client')) errors.push('Client signature is required');
+
+    if (errors.length > 0) {
+      status.innerHTML = '<div style="border:1px solid rgba(248,113,113,0.3); background:rgba(248,113,113,0.05); padding:16px 20px; text-align:left;">' +
+        errors.map(e => '<p style="font-family:\'Manrope\',sans-serif; font-size:0.8rem; color:#F87171; margin:0 0 4px;">• ' + e + '</p>').join('') +
+        '</div>';
+      return;
+    }
+
+    // Gather data
+    const planName = selectedPlan.querySelector('.plan-label').textContent;
+    const planPrice = selectedPlan.querySelector('.plan-price').textContent;
+    const addons = Array.from(document.querySelectorAll('.addon-option.selected')).map(el => {
+      return el.querySelector('h3').textContent + ' — ' + el.querySelector('span[style*="font-size:1.1rem"]').textContent.trim();
+    });
+    const providerSig = document.getElementById('sig-provider').toDataURL('image/png');
+    const clientSig = document.getElementById('sig-client').toDataURL('image/png');
+
+    // Disable button
+    btn.disabled = true;
+    btn.innerHTML = '<svg style="width:16px;height:16px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4m0 12v4m-7.07-3.93l2.83-2.83m8.48-8.48l2.83-2.83M2 12h4m12 0h4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83"/></svg> Sending...';
+    status.innerHTML = '';
+
+    // Build email body
+    const emailBody = `
+═══════════════════════════════════════
+  SIGNED CONTRACT — CJC MUSIC
+  Fishbone Creatives × CJC Music
+═══════════════════════════════════════
+
+SELECTED PLAN: ${planName}
+PRICE: ${planPrice}
+
+ADD-ON SERVICES: ${addons.length > 0 ? '\n' + addons.map(a => '  • ' + a).join('\n') : 'None'}
+
+───────────────────────────────────────
+
+SERVICE PROVIDER
+Name: ${providerName}
+Date: ${providerDate}
+
+CLIENT
+Name: ${clientName}
+Date: ${clientDate}
+
+───────────────────────────────────────
+
+Payment Terms: 50% downpayment on signing, 50% upon turnover.
+Timeline: 5–7 business days from receipt of content and assets.
+
+This contract was signed digitally at:
+${window.location.href}
+
+═══════════════════════════════════════
+    `.trim();
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/mikatesalonadecastro@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          _subject: 'Contract Signed — CJC Music × Fishbone Creatives (' + planName + ')',
+          _template: 'box',
+          'Selected Plan': planName + ' — ' + planPrice,
+          'Add-On Services': addons.length > 0 ? addons.join(' | ') : 'None',
+          'Provider Name': providerName,
+          'Provider Date': providerDate,
+          'Provider Signature': '<img src="' + providerSig + '" style="max-width:300px;height:auto;" />',
+          'Client Name': clientName,
+          'Client Date': clientDate,
+          'Client Signature': '<img src="' + clientSig + '" style="max-width:300px;height:auto;" />',
+          'Payment Terms': '50% downpayment on signing, 50% upon turnover',
+          'Timeline': '5-7 business days',
+          'Contract Summary': emailBody
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success === 'true' || result.success === true) {
+        status.innerHTML = '<div style="border:1px solid rgba(201,169,98,0.4); background:rgba(201,169,98,0.06); padding:24px; text-align:center;">' +
+          '<p style="font-family:\'Playfair Display\',Georgia,serif; font-size:1.2rem; color:#C9A962; margin:0 0 8px;">Contract Submitted Successfully</p>' +
+          '<p style="font-family:\'Manrope\',sans-serif; font-size:0.825rem; color:#888888; margin:0;">A copy has been sent to Fishbone Creatives. We\'ll be in touch shortly.</p>' +
+          '</div>';
+        btn.style.display = 'none';
+      } else {
+        throw new Error(result.message || 'Submission failed');
+      }
+    } catch (err) {
+      status.innerHTML = '<div style="border:1px solid rgba(248,113,113,0.3); background:rgba(248,113,113,0.05); padding:16px 20px;">' +
+        '<p style="font-family:\'Manrope\',sans-serif; font-size:0.8rem; color:#F87171; margin:0;">Something went wrong. Please try again or contact us directly.</p>' +
+        '</div>';
+      btn.disabled = false;
+      btn.innerHTML = '<i data-lucide="send" style="width:16px; height:16px; stroke-width:2;"></i> Submit Signed Contract';
+      lucide.createIcons();
+    }
+  }
 </script>
+<style>@keyframes spin { to { transform: rotate(360deg); } }</style>
 
 </body>
 </html>

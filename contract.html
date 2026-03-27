@@ -107,6 +107,48 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .plan-check.selected {
+      border-color: #C9A962;
+      background: rgba(201,169,98,0.15);
+    }
+    .plan-check.selected::after {
+      content: '✓';
+      color: #C9A962;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    .plan-option {
+      cursor: pointer;
+      padding: 12px 24px;
+      border: 1px solid #1F1F1F;
+      transition: all 0.3s ease;
+    }
+    .plan-option:hover {
+      border-color: rgba(201,169,98,0.4);
+      background: rgba(201,169,98,0.03);
+    }
+    .plan-option.selected {
+      border-color: #C9A962;
+      background: rgba(201,169,98,0.06);
+    }
+    .plan-option .plan-label {
+      transition: color 0.3s ease;
+    }
+    .plan-option.selected .plan-label {
+      color: #FAF8F5;
+    }
+    .plan-option .plan-price {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.7rem;
+      color: #555555;
+      margin-top: 2px;
+      transition: color 0.3s ease;
+    }
+    .plan-option.selected .plan-price {
+      color: #C9A962;
     }
 
     .print-btn {
@@ -148,6 +190,12 @@
       .body-text, .list-item { color: #333 !important; }
       .sig-line { border-bottom-color: #333 !important; }
       .plan-check { border-color: #333 !important; }
+      .plan-option { border-color: #ddd !important; background: transparent !important; }
+      .plan-option.selected { border-color: #333 !important; background: #f5f5f0 !important; }
+      .plan-option.selected .plan-check { border-color: #333 !important; background: #e8e4d8 !important; }
+      .plan-option.selected .plan-check::after { color: #333 !important; }
+      .plan-label { color: #333 !important; }
+      .plan-price { color: #666 !important; }
       section {
         border-color: #ddd !important;
         background: #fff !important;
@@ -406,18 +454,34 @@
   <section style="padding:80px 0 40px;">
     <div class="fade-in" style="margin-bottom:56px;">
       <span class="article-num">Selected Plan</span>
-      <div style="display:flex; flex-wrap:wrap; gap:32px; margin-top:16px;">
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div class="plan-check"></div>
-          <span style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Starter Site</span>
+      <p style="font-family:'Manrope',sans-serif; font-size:0.8rem; color:#666666; margin:8px 0 16px;">Click to select your preferred plan:</p>
+      <div style="display:flex; flex-wrap:wrap; gap:16px; margin-top:8px;">
+        <div class="plan-option" data-plan="starter" onclick="selectPlan(this)">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div class="plan-check"></div>
+            <div>
+              <span class="plan-label" style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Starter Site</span>
+              <p class="plan-price">₱8,000 one-time</p>
+            </div>
+          </div>
         </div>
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div class="plan-check"></div>
-          <span style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Growth Site</span>
+        <div class="plan-option" data-plan="growth" onclick="selectPlan(this)">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div class="plan-check"></div>
+            <div>
+              <span class="plan-label" style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Growth Site</span>
+              <p class="plan-price">₱7,000 + ₱1,500/mo</p>
+            </div>
+          </div>
         </div>
-        <div style="display:flex; align-items:center; gap:10px;">
-          <div class="plan-check"></div>
-          <span style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Pro Site</span>
+        <div class="plan-option" data-plan="pro" onclick="selectPlan(this)">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div class="plan-check"></div>
+            <div>
+              <span class="plan-label" style="font-family:'Manrope',sans-serif; font-size:0.875rem; color:#888888;">Pro Site</span>
+              <p class="plan-price">₱6,000 + ₱3,000/mo</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -477,6 +541,16 @@
   document.querySelectorAll('section:first-of-type .fade-in').forEach((el) => {
     setTimeout(() => el.classList.add('visible'), 100);
   });
+
+  // Plan selection (radio behavior — only one at a time)
+  function selectPlan(el) {
+    document.querySelectorAll('.plan-option').forEach(opt => {
+      opt.classList.remove('selected');
+      opt.querySelector('.plan-check').classList.remove('selected');
+    });
+    el.classList.add('selected');
+    el.querySelector('.plan-check').classList.add('selected');
+  }
 </script>
 
 </body>
